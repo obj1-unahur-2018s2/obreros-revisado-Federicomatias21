@@ -52,7 +52,7 @@ class Plomero inherits Obrero {
 	override method trabajar(obra) {
 		super(obra)
 		obra.restarCanio(cantCanio)
-		obra.cantArandelas(cantArandelas)
+		obra.restarArandelas(cantArandelas)
 		obra.desperdicio(desperdicio)
 	}
 

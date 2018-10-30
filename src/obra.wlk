@@ -1,6 +1,6 @@
 class Obra {
 
-	const property plantilla = []
+	const property plantilla = #{}
 	var property cantCanio = 0
 	var property cantCable = 0
 	var property cantCinta = 0
@@ -16,6 +16,11 @@ class Obra {
 
 	method quitarDePlant(obrero) {
 		plantilla.remove(obrero)
+	}
+	method estaEnPlant(obrero){
+		
+		plantilla.any({elem=>elem.})
+		
 	}
 
 	method restarLadrillos(cant) {
