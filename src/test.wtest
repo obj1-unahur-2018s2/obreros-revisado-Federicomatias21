@@ -1,6 +1,7 @@
 import obreros.*
 import obra.*
 
+
 test "testX" {
 	var albanil = new Albanil()
 	var obra = new Obra()
@@ -8,29 +9,31 @@ test "testX" {
 	obra.cantLadrillos(100)
 	albanil.trabajar(obra)
 	assert.equals(90, obra.cantLadrillos())
-}
-test "hola" {
 
-var albanil1 = new Albanil()
-var albanil2 = new Albanil()
-var construccion = new Obra()
-var gasista1 = new Gasista()
-var gasista2 = new Gasista()
-var plomero = new Plomero()
-construccion.agregarAPlant(albanil1)
-construccion.agregarAPlant(albanil2)
-construccion.agregarAPlant(gasista1)
-construccion.agregarAPlant(gasista2)
-construccion.agregarAPlant(plomero)
-albanil1.bLicencia(true)
-construccion.cantLadrillos(1000)
-construccion.cantCanio(400)
-construccion.cantFosforos(8000)
-construccion.cantArandelas(500)
-construccion.trabajar()
-assert.equals(construccion.cantLadrillos(),900)
-assert.equals(construccion.cantCanio(),384)
-assert.equals(construccion.cantFosforos(),7960)
-assert.equals(construccion.cantArandelas(),470)
+}
+
+test "hola" {
+	var albanil1 = new Albanil()
+	var albanil2 = new Albanil()
+	var construccion = new Obra()
+	var gasista1 = new Gasista()
+	var gasista2 = new Gasista()
+	var plomero = new Plomero()
+    construccion.agregarAPlant(albanil1)
+	construccion.agregarAPlant(albanil2)
+	construccion.agregarAPlant(gasista1)
+	construccion.agregarAPlant(gasista2)
+	construccion.agregarAPlant(plomero)
+	plomero.bLicencia(true)
+	construccion.cantLadrillos(1000)
+	construccion.cantCanio(400)
+	construccion.cantFosforos(8000)
+	construccion.cantArandelas(500)
+	construccion.trabajar()
+	assert.equals(construccion.cantLadrillos(), 900)
+	assert.equals(construccion.cantCanio(), 384)
+	assert.equals(construccion.cantFosforos(), 7960)
+	assert.equals(construccion.cantArandelas(), 470)
+	assert.equals(albanil2.jornalesAdeudados(),1)
 
 }

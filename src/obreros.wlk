@@ -1,17 +1,27 @@
 import obra.*
+import uocra.*
 
 class Obrero {
-	var diasAdeudados
+	var property jornalesAdeudados=0
+
 	var property bLicencia = false
+
 	method pedirLicencia() {
 		bLicencia = true
-	}	
-	method salirLicencia(){
+	}
+
+	method salirLicencia() {
 		bLicencia = false
 	}
-	method trabajar(obra){
-		
+
+	method trabajar(obra) {
+		jornalesAdeudados++
 	}
+	method cancelarJornales(){
+		jornalesAdeudados=0	
+	}
+
+
 }
 
 class Albanil inherits Obrero {
@@ -19,11 +29,17 @@ class Albanil inherits Obrero {
 	var property cantLadrillos = 100
 	var property desperdicio = 0
 	var property aPorte = 3
+
 	override method trabajar(obra) {
 		super(obra)
 		obra.restarLadrillos(cantLadrillos)
 		obra.desperdicio(desperdicio)
+	
 	}
+	method debeCobrar() {
+		return uocra.jornalAlbanil() * jornalesAdeudados
+	}		
+
 
 }
 
@@ -39,8 +55,11 @@ class Gasista inherits Obrero {
 		obra.restarCanio(cantCanio)
 		obra.restarFosforos(cantFosforos)
 		obra.desperdicio(desperdicio)
+		
 	}
-
+		method debeCobrar() {
+		return uocra.jornalGasista() * jornalesAdeudados
+	}
 }
 
 class Plomero inherits Obrero {
@@ -54,8 +73,10 @@ class Plomero inherits Obrero {
 		obra.restarCanio(cantCanio)
 		obra.restarArandelas(cantArandelas)
 		obra.desperdicio(desperdicio)
+	}	
+		method debeCobrar() {
+		return uocra.jornalPlomero() * jornalesAdeudados
 	}
-
 }
 
 class Electricista inherits Obrero {
@@ -69,7 +90,9 @@ class Electricista inherits Obrero {
 		obra.restarCable(cantCable)
 		obra.restarCinta(cantCinta)
 		obra.desperdicio(desperdicio)
+	}	
+		method debeCobrar() {
+		return uocra.jornalElectricista() * jornalesAdeudados
 	}
-
 }
 

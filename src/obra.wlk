@@ -8,8 +8,7 @@ class Obra {
 	var property cantArandelas = 0
 	var property cantLadrillos = 0
 	var property desperdicio = 0
-	
-	
+
 	method agregarAPlant(obrero) {
 		plantilla.add(obrero)
 	}
@@ -17,10 +16,9 @@ class Obra {
 	method quitarDePlant(obrero) {
 		plantilla.remove(obrero)
 	}
-	method estaEnPlant(obrero){
-		
-		plantilla.any({elem=>elem.})
-		
+
+	method estaEnPlant(obrero) {
+		return plantilla.contains(obrero)
 	}
 
 	method restarLadrillos(cant) {
@@ -40,22 +38,28 @@ class Obra {
 	}
 
 	method restarCinta(cant) {
-		
 		cantCinta -= cant
 	}
-	method restarArandelas(cant){
-		
+
+	method restarArandelas(cant) {
 		cantArandelas -= cant
 	}
-	method trabajar(){
-		
-	plantilla.forEach({elem=>
-		if(!elem.bLicencia)
-		{
-		elem.trabajar(self)})
-		}
-		
-}
-}
 
+	method trabajar() {
+		plantilla.forEach({ elem =>
+			if (!elem.bLicencia()) {
+				elem.trabajar(self)
+			}
+		})
+	}
+
+	method pagarTotalDeuda() {
+		return plantilla.sum({ elem => elem.debeCobrar() })
+	}
+
+	method registrarJornales() {
+		plantilla.forEach({ elem => elem.cancelarJornales()})
+	}
+
+}
 
